@@ -5,18 +5,32 @@ export const fileTree: IFile = {
   isFolder: true,
   children: [
     {
-      name: "index.tsx",
-      isFolder: false,
-    },
-    {
       name: "node_modules",
       isFolder: true,
       children: [
         {
-          name: "react.ts",
-          isFolder: false,
+          name: ".vite",
+          isFolder: true,
+          children: [
+            {
+              name: "react.tsx",
+              isFolder: false,
+            },
+            {
+              name: "react.jsx",
+              isFolder: false,
+            },
+          ],
         },
       ],
+    },
+    {
+      name: "index.html",
+      isFolder: false,
+    },
+    {
+      name: "index.css",
+      isFolder: false,
     },
   ],
 };
