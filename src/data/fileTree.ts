@@ -46,6 +46,10 @@ export const fileTree: IFile = {
               name: "Button.tsx",
               isFolder: false,
             },
+            {
+              name: "Modal.tsx",
+              isFolder: false,
+            },
           ],
         },
       ],
