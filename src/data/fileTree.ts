@@ -13,11 +13,11 @@ export const fileTree: IFile = {
           isFolder: true,
           children: [
             {
-              name: "react.tsx",
+              name: "react.js",
               isFolder: false,
             },
             {
-              name: "react.jsx",
+              name: "react.jsss",
               isFolder: false,
             },
           ],
@@ -25,12 +25,30 @@ export const fileTree: IFile = {
       ],
     },
     {
-      name: "index.html",
-      isFolder: false,
+      name: "public",
+      isFolder: true,
+      children: [
+        {
+          name: "index.html",
+          isFolder: false,
+        },
+      ],
     },
     {
-      name: "index.css",
-      isFolder: false,
+      name: "src",
+      isFolder: true,
+      children: [
+        {
+          name: "components",
+          isFolder: true,
+          children: [
+            {
+              name: "Button.tsx",
+              isFolder: false,
+            },
+          ],
+        },
+      ],
     },
   ],
 };
