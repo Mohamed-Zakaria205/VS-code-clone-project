@@ -1,21 +1,27 @@
-import FileIcon from "./ui/fileIcon";
+import type { IFile } from "../interfaces";
+import FileIcon from "./ui/FileIcon";
+import FolderIcon from "./ui/FolderIcon";
 import RightArrowIcon from "./ui/RightArrowIcon";
 
 interface IProps {
-  fileName: string;
+  file: IFile;
 }
-const FileComponent = ({ fileName }: IProps) => {
+const RecursiveComponent = ({ file }: IProps) => {
   return (
-    <div>
-      <div className="flex items-center mb-2">
+    <div className="ml-2">
+      <div className="flex items-center mb-2 ">
         <RightArrowIcon />
         <span className="mr-2">
-          <FileIcon />
+          {file.isFolder ? <FolderIcon /> : <FileIcon />}
         </span>
-        <span className="text-white">{fileName}</span>
+        <span className="text-white">{file.name}</span>
       </div>
+      {file.children &&
+        file?.children.map((child) => {
+          return <RecursiveComponent file={child} />;
+        })}
     </div>
   );
 };
 
-export default FileComponent;
+export default RecursiveComponent;

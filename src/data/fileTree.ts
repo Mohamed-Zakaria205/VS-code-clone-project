@@ -11,6 +11,12 @@ export const fileTree: IFile = {
     {
       name: "node_modules",
       isFolder: true,
+      children: [
+        {
+          name: "react.ts",
+          isFolder: false,
+        },
+      ],
     },
   ],
 };
