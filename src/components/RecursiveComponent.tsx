@@ -22,13 +22,13 @@ const RecursiveComponent = ({ file: { name, isFolder, children } }: IProps) => {
         {isFolder ? (
           <div onClick={toggle} className="flex items-center ">
             {isOpen ? <BottomArrow /> : <RightArrowIcon />}
-            <FolderIcon />
-            <span className="text-white ml-2">{name}</span>
+            <RenderFileIcon fileName={name} />
+            <span className="text-white ml-1">{name}</span>
           </div>
         ) : (
           <div className=" flex items-center ml-2">
             <RenderFileIcon fileName={name} />
-            <span className="text-white ml-2">{name}</span>
+            <span className="text-white ml-1">{name}</span>
           </div>
         )}
       </div>

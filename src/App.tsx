@@ -1,4 +1,4 @@
-import RecursiveComponent from "./components/FileComponent";
+import RecursiveComponent from "./components/RecursiveComponent";
 import { fileTree } from "./data/fileTree";
 
 function App() {
