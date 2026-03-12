@@ -4,7 +4,7 @@ import RightArrowIcon from "./SVG/RightArrow";
 import BottomArrow from "./SVG/BottomArrow";
 import RenderFileIcon from "./RenderFileIcon";
 import { useDispatch, useSelector } from "react-redux";
-import { setOpenedFiles } from "../app/features/fileTreeSlice";
+import { setOpenedFilesAction } from "../app/features/fileTreeSlice";
 import type { RootState } from "../app/store";
 import { doesFileObjectExist } from "../utils/functions";
 
@@ -24,10 +24,10 @@ const RecursiveComponent = ({ file }: IProps) => {
   const exists = doesFileObjectExist(openedFiles, id);
   const onClickedFile = () => {
     if (exists) return;
-    dispatch(setOpenedFiles([...openedFiles, file]));
+    dispatch(setOpenedFilesAction([...openedFiles, file]));
   };
   return (
-    <div className="ml-2 mb-2 cursor-pointer">
+    <div className="ml-1 mb-2 cursor-pointer">
       <div className="flex items-center mb-1">
         {isFolder ? (
           <div onClick={toggle} className="flex items-center ">

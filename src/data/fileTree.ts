@@ -20,6 +20,7 @@ export const fileTree: IFile = {
               id: uuid(),
               name: "react.js",
               isFolder: false,
+              content: "import React from 'react';",
             },
             {
               id: uuid(),
