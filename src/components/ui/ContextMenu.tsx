@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setOpenedFilesAction } from "../../app/features/fileTreeSlice";
+import type { RootState } from "../../app/store";
 
 interface IProps {
   positions: { x: number; y: number };
@@ -11,6 +12,9 @@ const ContextMenu = ({ positions, setShowMenu }: IProps) => {
   const dispatch = useDispatch();
   const menuRef = useRef<HTMLDivElement>(null);
 
+  const { openedFiles, tapIDToRemove } = useSelector(
+    (state: RootState) => state.tree,
+  );
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node))
@@ -21,16 +25,27 @@ const ContextMenu = ({ positions, setShowMenu }: IProps) => {
       window.document.removeEventListener("click", handleClick);
     };
   }, [setShowMenu]);
+
+  // handlers
+
+  const onClose = () => {
+    const filtered = openedFiles.filter((file) => file.id !== tapIDToRemove);
+    dispatch(setOpenedFilesAction(filtered));
+    setShowMenu(false);
+  };
   return (
     <div ref={menuRef}>
       <ul
         className="bg-black border border-gray-500 text-gray-400 w-fit px-7 py-2 rounded-md absolute"
         style={{ top: positions.y, left: positions.x }}
       >
-        <li className="hover:text-white cursor-pointer">Close tap</li>
+        <li className="hover:text-white cursor-pointer" onClick={onClose}>
+          Close tap
+        </li>
         <li
           onClick={() => {
             dispatch(setOpenedFilesAction([]));
+            setShowMenu(false);
           }}
           className="mt-3 hover:text-white cursor-pointer"
         >

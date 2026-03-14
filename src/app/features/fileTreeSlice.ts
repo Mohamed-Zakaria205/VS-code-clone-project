@@ -9,6 +9,7 @@ interface IClickedFile {
 interface IInitialState {
   openedFiles: IFile[];
   clickedFile: IClickedFile;
+  tapIDToRemove: string | null;
 }
 
 const initialState: IInitialState = {
@@ -18,6 +19,7 @@ const initialState: IInitialState = {
     fileName: "",
     fileContent: "",
   },
+  tapIDToRemove: null,
 };
 const fileTreeSlice = createSlice({
   name: "tree",
@@ -29,9 +31,12 @@ const fileTreeSlice = createSlice({
     setClickedFileAction: (state, action: PayloadAction<IClickedFile>) => {
       state.clickedFile = action.payload;
     },
+    setTapIDToRemove: (state, action: PayloadAction<string>) => {
+      state.tapIDToRemove = action.payload;
+    },
   },
 });
 
-export const { setOpenedFilesAction, setClickedFileAction } =
+export const { setOpenedFilesAction, setClickedFileAction, setTapIDToRemove } =
   fileTreeSlice.actions;
 export default fileTreeSlice.reducer;
