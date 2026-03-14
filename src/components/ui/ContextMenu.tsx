@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { setOpenedFilesAction } from "../../app/features/fileTreeSlice";
 
 interface IProps {
   positions: { x: number; y: number };
@@ -6,6 +8,7 @@ interface IProps {
 }
 
 const ContextMenu = ({ positions, setShowMenu }: IProps) => {
+  const dispatch = useDispatch();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,11 +24,18 @@ const ContextMenu = ({ positions, setShowMenu }: IProps) => {
   return (
     <div ref={menuRef}>
       <ul
-        className="bg-white text-black w-fit px-7 py-2 rounded-md absolute"
+        className="bg-black border border-gray-500 text-gray-400 w-fit px-7 py-2 rounded-md absolute"
         style={{ top: positions.y, left: positions.x }}
       >
-        <li>Close tap</li>
-        <li>Close all taps</li>
+        <li className="hover:text-white cursor-pointer">Close tap</li>
+        <li
+          onClick={() => {
+            dispatch(setOpenedFilesAction([]));
+          }}
+          className="mt-3 hover:text-white cursor-pointer"
+        >
+          Close all taps
+        </li>
       </ul>
     </div>
   );
