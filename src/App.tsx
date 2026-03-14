@@ -11,7 +11,7 @@ function App() {
   return (
     <ResizablePanel
       leftPanel={
-        <div className="h-full overflow-auto p-2">
+        <div className="h-full overflow-auto p-2 w-64">
           <RecursiveComponent file={fileTree} />
         </div>
       }
