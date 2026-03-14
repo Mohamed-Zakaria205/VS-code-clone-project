@@ -7,6 +7,7 @@ export const extensionFilePaths: Record<string, string> = {
   css: "/icons/css",
   ts: "/icons/typescript",
   json: "/icons/json",
+  svg: "/icons/svg",
   //* folders Paths*//
 
   node_modules: "/icons/folder-node",
