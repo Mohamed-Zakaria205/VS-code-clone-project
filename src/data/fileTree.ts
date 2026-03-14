@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 export const fileTree: IFile = {
   id: uuid(),
-  name: "my-react-app",
+  name: "vs-code-clone",
   isFolder: true,
   children: [
     {
